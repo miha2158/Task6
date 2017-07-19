@@ -22,7 +22,7 @@ namespace Task6
             b = a;
             a = result;
         }
-        
+
         static void Main(string[] args)
         {
 
