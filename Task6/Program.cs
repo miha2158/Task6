@@ -31,7 +31,7 @@ namespace Task6
             double n;
 
             while (!double.TryParse(ReadLine().Replace(".",","), out n))
-                WriteLine("Произошла ошибка. {0}",msg);
+                WriteLine("Произошла ошибка. Введите число");
 
             return n;
         }
@@ -41,17 +41,27 @@ namespace Task6
         {
             WriteLine("Введите первые 3 элемента числовой последовательности\n");
 
-            double a0 = ReadNum("Введите 1-й элемент");
+            double a2 = ReadNum("Введите 1-й элемент");
             double a1 = ReadNum("Введите 2-й элемент");
-            double a2 = ReadNum("Введите 3-й элемент");
+            double a0 = ReadNum("Введите 3-й элемент");
 
             WriteLine();
             double m = ReadNum("Введите искомое число");
-            double n = ReadNum("Введите количество элементов последовательности");
+            int n = 1 + (int)ReadNum("Введите количество элементов последовательности");
+            int i = 0;
+            string nums = string.Empty;
 
+            while (n-- > 0)
+            {
+                i++;
+                if (Math.Abs(m - a2) < 0.000001)
+                    nums += " " + i;
+                iterrate(ref a0, ref a1, ref a2);
+            }
 
-
-
+            if (nums == string.Empty)
+                nums = "Таких нету";
+            WriteLine("Элементы последовательности совпадающие с числом {0}:\n'{1}'", m, nums);
 
             ReadKey(true);
         }
