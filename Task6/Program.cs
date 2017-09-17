@@ -7,13 +7,6 @@ namespace Task6
 {
     class Program
     {
-        static void Swap(ref double a, ref double b)
-        {
-            var temp = a;
-            a = b;
-            b = temp;
-        }
-
         static void iterrate(ref decimal a, ref decimal b, ref decimal c)
         {
             decimal result = a + b / 3 + c * 3;
@@ -44,19 +37,21 @@ namespace Task6
 
             WriteLine();
             decimal m = ReadNum("Введите искомое число");
-            int n = 1 + (int)ReadNum("Введите количество элементов последовательности");
+            int n = (int)ReadNum("Введите количество элементов последовательности");
             int i = 0;
             var nums = new List<double>(0);
 
-            Write("Последовательность:");
+            Write("Последовательность:\n");
             while (n-- > 0)
             {
                 i++;
-                Write(" {0}", a0);
+                Write(" {0}. {1}\n", i, a2);
                 if (Math.Abs(m - a2) < 0.000001M)
                     nums.Add(1);
                 iterrate(ref a0, ref a1, ref a2);
             }
+            WriteLine();
+            WriteLine();
 
             if (nums.Count == 0)
                 WriteLine("Элементов совпадающих с {0} нету", m);
