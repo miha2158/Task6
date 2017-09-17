@@ -46,7 +46,7 @@ namespace Task6
             {
                 i++;
                 Write(" {0}. {1}\n", i, a2);
-                if (Math.Abs(m - a2) < 0.000001M)
+                if (Math.Abs(m - a2) < 0.00000001M)
                     nums.Add(1);
                 iterrate(ref a0, ref a1, ref a2);
             }
