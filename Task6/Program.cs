@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 using static System.Console;
 
@@ -13,20 +14,20 @@ namespace Task6
             b = temp;
         }
 
-        static void iterrate(ref double a, ref double b, ref double c)
+        static void iterrate(ref decimal a, ref decimal b, ref decimal c)
         {
-            double result = a + b / 3 + c * 3;
+            decimal result = a + b / 3 + c * 3;
             c = b;
             b = a;
             a = result;
         }
 
-        static double ReadNum(string msg)
+        static decimal ReadNum(string msg)
         {
             WriteLine(msg);
-            double n;
+            decimal n;
 
-            while (!double.TryParse(ReadLine().Replace(".",","), out n))
+            while (!decimal.TryParse(ReadLine().Replace(".",","), out n))
                 WriteLine("Произошла ошибка. Введите число");
 
             return n;
@@ -37,27 +38,35 @@ namespace Task6
         {
             WriteLine("Введите первые 3 элемента числовой последовательности\n");
 
-            double a2 = ReadNum("Введите 1-й элемент");
-            double a1 = ReadNum("Введите 2-й элемент");
-            double a0 = ReadNum("Введите 3-й элемент");
+            decimal a2 = ReadNum("Введите 1-й элемент");
+            decimal a1 = ReadNum("Введите 2-й элемент");
+            decimal a0 = ReadNum("Введите 3-й элемент");
 
             WriteLine();
-            double m = ReadNum("Введите искомое число");
+            decimal m = ReadNum("Введите искомое число");
             int n = 1 + (int)ReadNum("Введите количество элементов последовательности");
             int i = 0;
-            string nums = string.Empty;
+            var nums = new List<double>(0);
 
+            Write("Последовательность:");
             while (n-- > 0)
             {
                 i++;
-                if (Math.Abs(m - a2) < 0.000001)
-                    nums += " " + i;
+                Write(" {0}", a0);
+                if (Math.Abs(m - a2) < 0.000001M)
+                    nums.Add(1);
                 iterrate(ref a0, ref a1, ref a2);
             }
 
-            if (nums == string.Empty)
-                nums = "Таких нету";
-            WriteLine("Элементы последовательности совпадающие с числом {0}:\n'{1}'", m, nums);
+            if (nums.Count == 0)
+                WriteLine("Элементов совпадающих с {0} нету", m);
+            else
+            {
+                WriteLine("С числом {0} совпадает: {1} элементов", m, nums.Count);
+                Write("Элементы:");
+                foreach (double d in nums)
+                    Write(" {0}", d);
+            }
 
             ReadKey(true);
         }
