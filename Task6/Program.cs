@@ -37,7 +37,22 @@ namespace Task6
 
             WriteLine();
             decimal m = ReadNum("Введите искомое число");
-            int n = (int)ReadNum("Введите количество элементов последовательности");
+            uint n;
+            while (true)
+            {
+                try
+                {
+                    n = (uint)ReadNum("Введите количество элементов последовательности");
+                    if(n == 0)
+                        throw new Exception();
+                    break;
+                }
+                catch (Exception)
+                {
+                    WriteLine("Введите положительное число\n");
+                }
+            }
+            
             int i = 0;
             var nums = new List<double>(0);
 
