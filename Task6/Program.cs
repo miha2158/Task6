@@ -49,7 +49,7 @@ namespace Task6
                 }
                 catch (Exception)
                 {
-                    WriteLine("Введите положительное число\n");
+                    WriteLine("Введите натуральное число\n");
                 }
             }
             
